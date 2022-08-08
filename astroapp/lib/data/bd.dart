@@ -69,7 +69,8 @@ class BD {
       alternativa5: 'e) 3',
     ),
   ];
-  static List<Questoes> getQuestoes() {
+  static Future<List<Questoes>> getCardQuestoes() async {
+    await Future.delayed(const Duration(seconds: 10));
     return lista;
   }
 }

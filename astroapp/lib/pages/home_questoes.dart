@@ -13,7 +13,7 @@ class HomeQuestoes extends StatefulWidget {
 
 class _HomeQuestoesState extends State<HomeQuestoes> {
 
-  List<Questoes> lista = BD.getQuestoes();
+  Future<List<Questoes>> lista = BD.getCardQuestoes();
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +38,26 @@ class _HomeQuestoesState extends State<HomeQuestoes> {
       ),
     );
   }
-  buildListView(){
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: lista.length,
-      itemBuilder: (BuildContext context, int index) {
-        return CardQuestoes(questoes: lista[index]);
+  buildListView() {
+    return FutureBuilder<List<Questoes>>(
+      future: lista,
+      builder: (context, snapshot) {
+
+        if(snapshot.hasData) {
+          List<Questoes> lista = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: lista.length,
+            itemBuilder: (BuildContext context, int index) {
+              return CardQuestoes(questoes: lista[index]);
+            },
+          );
+        }
+
+        return const Center(child: CircularProgressIndicator());
+
       },
     );
   }

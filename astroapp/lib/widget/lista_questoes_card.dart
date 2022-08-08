@@ -42,7 +42,9 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        acertouMensagem(context);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 10.0,
@@ -63,7 +65,9 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        errouMensagem(context);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10.0,
@@ -84,7 +88,9 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        errouMensagem(context);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10.0,
@@ -105,7 +111,9 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        errouMensagem(context);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10.0,
@@ -126,7 +134,9 @@ class _CardQuestoesState extends State<CardQuestoes> {
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFF0F2179),
                       ),
-                      onPressed: (){},
+                      onPressed: (){
+                        errouMensagem(context);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10.0,
@@ -160,6 +170,43 @@ class _CardQuestoesState extends State<CardQuestoes> {
           child: Image.network(widget.questoes.imagem),
         ),
       ],
+    );
+  }
+
+  acertouMensagem(BuildContext context) {
+    AlertDialog alerta = const AlertDialog(
+      title: Text(
+          "Parábens! Você Acertou!",
+        style: TextStyle(
+          color: Color(0xFF3E7F34),
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+  }
+  errouMensagem(BuildContext context) {
+    AlertDialog alerta = const AlertDialog(
+      title: Text(
+          "Que Pena, Você Errou! Tente de novo ;) ",
+        style: TextStyle(
+          color: Color(0xFFAA0718),
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
     );
   }
 }
