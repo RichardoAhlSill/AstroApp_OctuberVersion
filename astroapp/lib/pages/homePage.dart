@@ -1,10 +1,11 @@
 import 'package:astroapp/pages/astronautica.dart';
-import 'package:astroapp/pages/astronomia.dart';
 import 'package:astroapp/pages/home_questoes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
+import '../domain/noticias.dart';
+import '../widget/lista_noticias_card.dart';
+import 'package:astroapp/data/bd.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,13 +15,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  Future<List<Noticias>> listaNoticias = BD.getCardNoticias();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 18, 30, 138),
+          backgroundColor: const Color.fromARGB(255, 18, 30, 138),
           centerTitle: true,
-          title: Text('AstroAPP'),
+          title: const Text('AstroAPP'),
           actions: [
 
             // Método pra colocar imagem ao centro (talvez dê errado dependendo da resolução de cada aparelho)
@@ -39,17 +43,17 @@ class _HomePageState extends State<HomePage> {
                         builder: (context) => CadastroPage()),
                   );
                 },
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
               ),
             ),
           ],
         ),
         drawer: Drawer(
-          backgroundColor: Color.fromARGB(255, 18, 30, 138),
+          backgroundColor: const Color.fromARGB(255, 18, 30, 138),
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 48, horizontal: 16),
+                margin: const EdgeInsets.symmetric(vertical: 48, horizontal: 16),
                 child: InkWell(
                   child: Row(
                     children: [
@@ -57,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                         height: 72,
                         width: 64,
                         color: Colors.yellow,
-                        child: Icon(
+                        child: const Icon(
                           Icons.person,
                           size: 50,
                         ),
@@ -68,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Text(
                               'Marcos',
                               textAlign: TextAlign.center,
@@ -97,14 +101,14 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 0,
                   horizontal: 16,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
+                    const Text(
                       'Notícias',
                       style: TextStyle(
                         color: Colors.white,
@@ -114,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: 16),
                     InkWell(
-                        child: Text(
+                        child: const Text(
                           'Astronáutica',
                           style: TextStyle(
                             color: Colors.white,
@@ -131,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                         }),
                     SizedBox(height: 16),
                     InkWell(
-                      child: Text(
+                      child: const Text(
                         'Astronomia',
                         style: TextStyle(
                           color: Colors.white,
@@ -148,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                     SizedBox(height: 16),
-                    Text(
+                    const Text(
                       'Indicações',
                       style: TextStyle(
                         color: Colors.white,
@@ -157,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     SizedBox(height: 16),
-                    Text(
+                    const Text(
                       'Quiz',
                       style: TextStyle(
                         color: Colors.white,
@@ -167,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: 16),
                     InkWell(
-                      child: Text(
+                      child: const Text(
                         'Questões',
                         style: TextStyle(
                           color: Colors.white,
@@ -179,12 +183,13 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomeQuestoes()),
+                              builder: (context) => const HomeQuestoes(),
+                          ),
                         );
                       },
                     ),
                     SizedBox(height: 16),
-                    Text(
+                    const Text(
                       'Novidades',
                       style: TextStyle(
                         color: Colors.white,
@@ -193,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     SizedBox(height: 16),
-                    Text(
+                    const Text(
                       'Extra',
                       style: TextStyle(
                         color: Colors.white,
@@ -216,34 +221,38 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: [
-              Text(
+              const Text(
                 'Notícias',
                 style: TextStyle(
                   fontSize: 40,
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 10),
-                color: Colors.grey,
-                width: 100,
-                height: 240,
-                child: Column(
-                  children: [
-                    Container(
-                        child: Image.network(
-                          'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/06/78612212_2846136555417292_2868582208589791232_n.jpg?w=876&h=484&crop=1',
-                          height: 190,
-                          width: 400,
-                          fit: BoxFit.cover,
-                        )),
-                    Text(
-                        'Brasil será sede de lançamento de foguete sul-coreano',
-                        style: TextStyle(fontSize: 16)),
-                  ],
-                ),
-              )
+              buildListView(),
             ],
           ),
         ));
+  }
+  buildListView() {
+    return FutureBuilder<List<Noticias>>(
+      future: listaNoticias,
+      builder: (context, snapshot) {
+
+        if(snapshot.hasData) {
+          List<Noticias> listaNoticias = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: listaNoticias.length,
+            itemBuilder: (BuildContext context, int index) {
+              return CardNoticias(noticias: listaNoticias[index]);
+            },
+          );
+        }
+
+        return const Center(child: CircularProgressIndicator());
+
+      },
+    );
   }
 }

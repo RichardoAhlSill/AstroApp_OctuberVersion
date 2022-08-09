@@ -1,3 +1,4 @@
+import 'package:astroapp/domain/noticias.dart';
 import 'package:astroapp/domain/questoes.dart';
 
 class BD {
@@ -69,8 +70,24 @@ class BD {
       alternativa5: 'e) 3',
     ),
   ];
+
+  static List<Noticias> listaNoticias = [
+      Noticias(
+        imagem: 'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/06/78612212_2846136555417292_2868582208589791232_n.jpg?w=876&h=484&crop=1',
+        titulo: 'Brasil será sede de lançamento de foguete sul-coreano',
+      ),
+    Noticias(
+      imagem: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Size_planets_comparison.jpg/1280px-Size_planets_comparison.jpg',
+      titulo: 'Titulo - 2022',
+    ),
+  ];
+
   static Future<List<Questoes>> getCardQuestoes() async {
     await Future.delayed(const Duration(seconds: 10));
     return lista;
+  }
+  static Future<List<Noticias>> getCardNoticias() async {
+    await Future.delayed(const Duration(seconds: 10));
+    return listaNoticias;
   }
 }
