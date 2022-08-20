@@ -1,5 +1,6 @@
 import 'package:astroapp/pages/astronautica.dart';
 import 'package:astroapp/pages/home_questoes.dart';
+import 'package:astroapp/pages/noticiasPage.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
@@ -15,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   Future<List<Noticias>> listaNoticias = BD.getCardNoticias();
 
   @override
@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           title: const Text('AstroAPP'),
           actions: [
-
             // Método pra colocar imagem ao centro (talvez dê errado dependendo da resolução de cada aparelho)
             /*Image.asset(
               'assets/imagens/logo_astroapp.png',
@@ -39,8 +38,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => CadastroPage()),
+                    MaterialPageRoute(builder: (context) => CadastroPage()),
                   );
                 },
                 icon: const Icon(Icons.person),
@@ -53,7 +51,8 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(vertical: 48, horizontal: 16),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 48, horizontal: 16),
                 child: InkWell(
                   child: Row(
                     children: [
@@ -95,7 +94,8 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
                     );
                   },
                 ),
@@ -183,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeQuestoes(),
+                            builder: (context) => const HomeQuestoes(),
                           ),
                         );
                       },
@@ -232,27 +232,33 @@ class _HomePageState extends State<HomePage> {
           ),
         ));
   }
+
   buildListView() {
-    return FutureBuilder<List<Noticias>>(
-      future: listaNoticias,
-      builder: (context, snapshot) {
-
-        if(snapshot.hasData) {
-          List<Noticias> listaNoticias = snapshot.data ?? [];
-
-          return ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: listaNoticias.length,
-            itemBuilder: (BuildContext context, int index) {
-              return CardNoticias(noticias: listaNoticias[index]);
-            },
-          );
-        }
-
-        return const Center(child: CircularProgressIndicator());
-
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => NoticiasPage(),
+        ));
       },
+      child: FutureBuilder<List<Noticias>>(
+        future: listaNoticias,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<Noticias> listaNoticias = snapshot.data ?? [];
+
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: listaNoticias.length,
+              itemBuilder: (BuildContext context, int index) {
+                return CardNoticias(noticias: listaNoticias[index]);
+              },
+            );
+          }
+
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }
