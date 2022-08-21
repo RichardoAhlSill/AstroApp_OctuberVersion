@@ -1,5 +1,4 @@
 import 'package:astroapp/pages/astronautica.dart';
-import 'package:astroapp/pages/home_questoes.dart';
 import 'package:astroapp/pages/noticiasPage.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/pages/cadastropage.dart';
@@ -7,6 +6,8 @@ import 'package:astroapp/pages/loginpage.dart';
 import '../domain/noticias.dart';
 import '../widget/lista_noticias_card.dart';
 import 'package:astroapp/data/bd.dart';
+
+import 'assuntosQuest_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -183,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomeQuestoes(),
+                            builder: (context) => const AssuntosQuestoes(),
                           ),
                         );
                       },
