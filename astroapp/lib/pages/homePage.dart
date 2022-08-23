@@ -1,4 +1,5 @@
 import 'package:astroapp/pages/astronautica.dart';
+import 'package:astroapp/pages/indicacoes.dart';
 import 'package:astroapp/pages/noticiasPage.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/pages/cadastropage.dart';
@@ -152,14 +153,17 @@ class _HomePageState extends State<HomePage> {
                         );
                       },
                     ),
-                    SizedBox(height: 16),
-                    const Text(
-                      'Indicações',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
+                    const SizedBox(height: 16),
+                    InkWell (
+                      child: const Text(
+                        'Indicações',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
                       ),
+                      onTap: onTap,
                     ),
                     SizedBox(height: 16),
                     const Text(
@@ -258,6 +262,17 @@ class _HomePageState extends State<HomePage> {
           }
 
           return const Center(child: CircularProgressIndicator());
+        },
+      ),
+    );
+  }
+
+  void onTap() {
+    Navigator.push(
+      context,
+       MaterialPageRoute(
+        builder: (context){
+          return const IndicacoesPage();
         },
       ),
     );
