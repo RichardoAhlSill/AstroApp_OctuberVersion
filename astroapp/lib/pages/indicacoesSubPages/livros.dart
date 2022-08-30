@@ -21,8 +21,9 @@ class _LivrosState extends State<Livros> {
         child: ListView(
           children: [
             Text(
-              'Canais do Youtube',
+              'Livros e outros materiais',
               textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 32),
             ),
             SizedBox(height: 32),
             InkWell(

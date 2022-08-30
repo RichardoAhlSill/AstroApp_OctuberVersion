@@ -1,6 +1,8 @@
 import 'package:astroapp/pages/astronautica.dart';
+import 'package:astroapp/pages/astronomia.dart';
 import 'package:astroapp/pages/indicacoes.dart';
 import 'package:astroapp/pages/noticiasPage.dart';
+import 'package:astroapp/pages/novidadesPage.dart';
 import 'package:flutter/material.dart';
 import 'package:astroapp/pages/cadastropage.dart';
 import 'package:astroapp/pages/loginpage.dart';
@@ -110,14 +112,23 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
-                      'Notícias',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    ),
+                    InkWell(
+                        child: const Text(
+                          'Notícias',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NoticiasPage(),
+                            ),
+                          );
+                        }),
                     SizedBox(height: 16),
                     InkWell(
                         child: const Text(
@@ -148,8 +159,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => Astronautica()),
+                          MaterialPageRoute(builder: (context) => Astronomia()),
                         );
                       },
                     ),
@@ -194,13 +204,22 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                     SizedBox(height: 16),
-                    const Text(
-                      'Novidades',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
+                    InkWell(
+                      child: const Text(
+                        'Novidades',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(
+                            builder: ((context) => NovidadesPage()),
+                          ),
+                        );
+                      },
                     ),
                     SizedBox(height: 16),
                     const Text(

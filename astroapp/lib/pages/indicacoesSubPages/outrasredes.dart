@@ -23,13 +23,15 @@ class _OutrasRedesState extends State<OutrasRedes> {
             Text(
               'Outras redes',
               textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 32),
             ),
             SizedBox(height: 32),
             const Text(
-              'Já vimos importantes canais no YouTube, indicações de sites, de livros e materiais (ambos com seus autorores - obviamente :) ). Que tal agora conhecer mais de perto importantes contrinbuidores para o desenvolvimento da astronomia? \n\n DICA: Indicamos especialmente o Telegram  deste, pois contém muitos outros materiasis, além dos que estão aqui no app ;).'
+              'Já vimos importantes canais no YouTube, indicações de sites, de livros e materiais (ambos com seus autorores - obviamente :) ). Que tal agora conhecer mais de perto importantes contrinbuidores para o desenvolvimento da astronomia? \n\n DICA: Indicamos especialmente o Telegram  destes, pois contém muitos outros materiais, além dos que estão aqui no app ;).'
             ),
-
+            SizedBox(height: 32),
             Card(
+              color: Colors.grey,
               child: Column(
                 children: [
                   Text('Virgílio'),
@@ -68,6 +70,7 @@ class _OutrasRedesState extends State<OutrasRedes> {
             //parte 2
 
             Card(
+              color: Colors.grey,
               child: Column(
                 children: [
                   Text('Virgílio'),
@@ -106,6 +109,7 @@ class _OutrasRedesState extends State<OutrasRedes> {
             //parte 3
 
             Card(
+              color: Colors.grey,
               child: Column(
                 children: [
                   Text('Virgílio'),
@@ -144,6 +148,7 @@ class _OutrasRedesState extends State<OutrasRedes> {
             //parte 4
 
             Card(
+              color: Colors.grey,
               child: Column(
                 children: [
                   Text('Virgílio'),

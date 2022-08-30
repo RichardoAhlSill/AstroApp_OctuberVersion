@@ -27,6 +27,7 @@ class _IndicacoesPageState extends State<IndicacoesPage> {
             Text(
               'Indicações',
               textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 32),
             ),
             SizedBox(height: 32),
             InkWell(

@@ -23,6 +23,7 @@ class _YouTubeState extends State<YouTube> {
             Text(
               'Canais do Youtube',
               textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 32),
             ),
             SizedBox(height: 32),
             InkWell(
