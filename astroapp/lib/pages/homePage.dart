@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                     const SizedBox(height: 16),
-                    InkWell (
+                    InkWell(
                       child: const Text(
                         'Indicações',
                         style: TextStyle(
@@ -270,8 +270,8 @@ class _HomePageState extends State<HomePage> {
   void onTap() {
     Navigator.push(
       context,
-       MaterialPageRoute(
-        builder: (context){
+      MaterialPageRoute(
+        builder: (context) {
           return const IndicacoesPage();
         },
       ),
