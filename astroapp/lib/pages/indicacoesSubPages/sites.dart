@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use, unused_import
 import 'package:flutter/material.dart';
 import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 //import 'package:url_launcher/url_launcher.dart';
 
 class Sites extends StatefulWidget {
@@ -20,6 +21,17 @@ class _SitesState extends State<Sites> {
     print('Não pode acessar o link $url');
   }
 }*/
+
+Future<void> abrirSite() async{
+  final Uri _url = Uri.parse('http://www.oba.org.br/site/');
+
+  if (!await launchUrl(
+    _url,
+    mode: LaunchMode.externalApplication,
+    )){
+      throw 'Could not launch $_url';
+    }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +84,8 @@ class _SitesState extends State<Sites> {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16),
-                  /*ElevatedButton(
-                    onPressed: () => _launchLink('http://www.oba.org.br/site/'),
+                  ElevatedButton(
+                    onPressed: () => abrirSite(),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
                       child: Text(
@@ -86,7 +98,7 @@ class _SitesState extends State<Sites> {
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,
                     ),
-                  ),*/
+                  ),
                 ],
               ),
             ),
@@ -233,6 +245,7 @@ class _SitesState extends State<Sites> {
                   ),
                   SizedBox(height: 16),
                   Link(
+                    //do vídeo: 
                     target: LinkTarget.blank,
                     uri: Uri.parse('http://www.oba.org.br/site/'), 
                     builder: (context, followLink) => ElevatedButton(
