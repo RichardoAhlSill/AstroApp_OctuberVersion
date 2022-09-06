@@ -252,6 +252,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               buildListView(),
+
               Padding(
                 padding: EdgeInsets.only(
                   top: 25,
@@ -268,12 +269,12 @@ class _HomePageState extends State<HomePage> {
                   margin: EdgeInsets.all(15.0),
                   color: Colors.grey,
                   width: 400,
-                  height: 250,
+                  height: 270,
 
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 5.0),
+                        padding: const EdgeInsets.only(top: 5.0, bottom: 2.0),
                         child: Text(
                           'Planetas',
                           style: TextStyle(
@@ -285,7 +286,7 @@ class _HomePageState extends State<HomePage> {
                       Image.network(
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrLVOeETJ1JaRoTqErkXH8qFSf-hhykYFQQ&usqp=CAU',
                         width: 375,
-                        height: 150,
+                        height: 170,
                       ),
 
                       Padding(
@@ -347,4 +348,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
