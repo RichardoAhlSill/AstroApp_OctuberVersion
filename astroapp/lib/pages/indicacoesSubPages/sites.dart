@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use, unused_import
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class Sites extends StatefulWidget {
   const Sites({Key? key}) : super(key: key);
@@ -12,12 +14,23 @@ class Sites extends StatefulWidget {
 
 class _SitesState extends State<Sites> {
   
-Future<void> _launchLink(String url) async {
+/*Future<void> _launchLink(String url) async {
   if (await canLaunch(url)) {
     await launch(url, forceWebView: false, forceSafariVC: false);
   } else {
     print('Não pode acessar o link $url');
   }
+}*/
+
+Future<void> abrirSite() async{
+  final Uri _url = Uri.parse('http://www.oba.org.br/site/');
+
+  if (!await launchUrl(
+    _url,
+    mode: LaunchMode.externalApplication,
+    )){
+      throw 'Could not launch $_url';
+    }
 }
 
   @override
@@ -72,7 +85,7 @@ Future<void> _launchLink(String url) async {
                   ),
                   SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () => _launchLink('http://www.oba.org.br/site/'),
+                    onPressed: () => abrirSite(),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
                       child: Text(
@@ -124,7 +137,7 @@ Future<void> _launchLink(String url) async {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
+                  /*ElevatedButton(
                     onPressed: () => _launchLink('http://www.oba.org.br/site/'),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
@@ -138,7 +151,7 @@ Future<void> _launchLink(String url) async {
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),
@@ -177,7 +190,7 @@ Future<void> _launchLink(String url) async {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
+                  /*ElevatedButton(
                     onPressed: () => _launchLink('http://www.oba.org.br/site/'),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
@@ -192,7 +205,7 @@ Future<void> _launchLink(String url) async {
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),
@@ -231,9 +244,12 @@ Future<void> _launchLink(String url) async {
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () => _launchLink('http://www.oba.org.br/site/'),
-                    child: Padding(
+                  Link(
+                    //do vídeo: 
+                    target: LinkTarget.blank,
+                    uri: Uri.parse('http://www.oba.org.br/site/'), 
+                    builder: (context, followLink) => ElevatedButton(
+                      child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
                       child: Text(
                         'Visite o site',
@@ -242,8 +258,7 @@ Future<void> _launchLink(String url) async {
                         ),
                       ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
+                      onPressed: followLink,
                     ),
                   ),
                 ],

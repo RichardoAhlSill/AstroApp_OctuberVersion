@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => NoticiasPage(),
+                              builder: (context) => HomePage(),
                             ),
                           );
                         }),
@@ -248,10 +248,61 @@ class _HomePageState extends State<HomePage> {
               const Text(
                 'Notícias',
                 style: TextStyle(
-                  fontSize: 40,
+                  fontSize: 35,
                 ),
               ),
               buildListView(),
+
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 25,
+                ),
+                child: Text(
+                    'Tópicos da semana',
+                    style: TextStyle(
+                    fontSize: 35,
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: EdgeInsets.all(15.0),
+                  color: Colors.grey,
+                  width: 400,
+                  height: 270,
+
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0, bottom: 2.0),
+                        child: Text(
+                          'Planetas',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+
+                      Image.network(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrLVOeETJ1JaRoTqErkXH8qFSf-hhykYFQQ&usqp=CAU',
+                        width: 375,
+                        height: 170,
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: ElevatedButton(
+                          onPressed: (){},
+                          child: Text(
+                            'VER MAIS'
+                          ),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ));
