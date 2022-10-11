@@ -215,7 +215,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onTap: () {
                         Navigator.push(
-                          context, MaterialPageRoute(
+                          context,
+                          MaterialPageRoute(
                             builder: ((context) => NovidadesPage()),
                           ),
                         );
@@ -252,14 +253,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               buildListView(),
-
               Padding(
                 padding: EdgeInsets.only(
                   top: 25,
                 ),
                 child: Text(
-                    'Tópicos da semana',
-                    style: TextStyle(
+                  'Tópicos da semana',
+                  style: TextStyle(
                     fontSize: 35,
                   ),
                 ),
@@ -270,7 +270,6 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.grey,
                   width: 400,
                   height: 270,
-
                   child: Column(
                     children: [
                       Padding(
@@ -282,23 +281,18 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-
                       Image.network(
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVrLVOeETJ1JaRoTqErkXH8qFSf-hhykYFQQ&usqp=CAU',
                         width: 375,
                         height: 170,
                       ),
-
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: ElevatedButton(
-                          onPressed: (){},
-                          child: Text(
-                            'VER MAIS'
-                          ),
+                          onPressed: () {},
+                          child: Text('VER MAIS'),
                         ),
                       ),
-
                     ],
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/conteudos_astronomia/introducao_astronomia.dart';
+// import 'package:flutter_application_1/conteudos_astronomia/introducao_astronomia.dart';
+import 'package:astroapp/pages/conteudos_astronomia/introducao_astronomia.dart';
 
 class Introducao_Astronautica extends StatefulWidget {
   const Introducao_Astronautica({Key? key}) : super(key: key);

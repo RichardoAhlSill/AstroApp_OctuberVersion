@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/conteudos_astronautica/introducao_astronautica.dart';
+// import 'package:flutter_application_1/conteudos_astronautica/introducao_astronautica.dart';
+import 'package:astroapp/pages/conteudos_astronautica/introducao_astronautica.dart';
 
 class Planetas extends StatefulWidget {
   const Planetas({Key? key}) : super(key: key);
